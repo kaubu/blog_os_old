@@ -14,6 +14,11 @@ use blog_os::println;
 #[no_mangle] // Don't mangle the name of this function
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
+
+    blog_os::init();
+
+    // Invoke a breakpoint exception
+    x86_64::instructions::interrupts::int3();
     
     #[cfg(test)]
     test_main();
