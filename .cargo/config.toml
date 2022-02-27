@@ -1,0 +1,8 @@
+# Rebuilds core for x86_64-blos_os target
+[unstable]
+build-std = ["core", "compiler_builtins"]
+build-std-features = ["compiler-builtins-mem"]
+
+# Set default target
+[build]
+target = "x86_64-blog_os.json"
