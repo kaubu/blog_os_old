@@ -17,8 +17,10 @@ pub extern "C" fn _start() -> ! {
 
     blog_os::init();
 
-    // Invoke a breakpoint exception
-    x86_64::instructions::interrupts::int3();
+    // Trigger a page fault
+    unsafe {
+        *(0xdeadbeef as *mut u64) = 42;
+    }
     
     #[cfg(test)]
     test_main();
